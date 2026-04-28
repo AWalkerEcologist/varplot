@@ -15,3 +15,5 @@ Suggests:
     testthat (>= 3.0.0)
 Additional_repositories: https://inla.r-inla-download.org/R/stable
 Config/testthat/edition: 3
+URL: https://github.com/AWalkerEcologist/varplot
+BugReports: https://github.com/AWalkerEcologist/varplot/issues
