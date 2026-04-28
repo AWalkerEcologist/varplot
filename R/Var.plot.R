@@ -30,9 +30,17 @@
 
 
 
+
 Var.plot = function(Model,
                     Plot_Intercept = FALSE, Plot_Title = NULL, Invert_Colors = FALSE,
                     Quantiles = c(0.5, 0.8, 0.9), CI_width = c(2.5, 2, 1), Sig_threshold = NULL) {
+  if (!requireNamespace("INLA", quietly = TRUE)) {
+    stop("Package 'INLA' is required. Install it with:
+  install.packages('INLA', repos = c(getOption('repos'),
+  INLA = 'https://inla.r-inla-download.org/R/stable'))")
+  }
+
+
   if (!inherits(Model, "inla")) {
     stop("Model must be an object of class 'inla'")
   }

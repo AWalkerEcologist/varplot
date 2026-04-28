@@ -1,4 +1,9 @@
-# Build a toy model once for all tests
+
+if (!requireNamespace("INLA", quietly = TRUE)) {
+  skip("INLA not available")
+}
+
+# Building a toy model once for all tests
 library(INLA)
 Intercept <- 1
 Slope <- 0.5

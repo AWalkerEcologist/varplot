@@ -5,7 +5,6 @@
 #'
 #' @return Outputs a dataframe containing the fixed effects and the upper and lower bounds of the credibility intervals specified.
 #' @export
-#' @importFrom INLA inla.emarginal inla.hpdmarginal
 #'
 #' @examples
 #' \donttest{
@@ -21,7 +20,14 @@
 #' }
 
 
+
 get.cred.intervals = function(Model, Quantiles = NULL) {
+  if (!requireNamespace("INLA", quietly = TRUE)) {
+    stop("Package 'INLA' is required. Install it with:
+  install.packages('INLA', repos = c(getOption('repos'),
+  INLA = 'https://inla.r-inla-download.org/R/stable'))")
+  }
+
   if (!inherits(Model, "inla")) {
     stop("Model must be an object of class 'inla'")
   }
@@ -55,10 +61,10 @@ get.cred.intervals = function(Model, Quantiles = NULL) {
 
   for (i in seq_along(terms)) {
     term = terms[i]
-    df$mu[i] = inla.emarginal(function(x) x, Model$marginals.fixed[[term]])             #posterior mean for fixed
+    df$mu[i] = INLA::inla.emarginal(function(x) x, Model$marginals.fixed[[term]])             #posterior mean for fixed
 
     for (j in Quantiles) {
-      cred_int = inla.hpdmarginal(j, Model$marginals.fixed[[term]])
+      cred_int = INLA::inla.hpdmarginal(j, Model$marginals.fixed[[term]])
       cols = which(names(df) %in% c(paste0("CI_", j*100, "_L"), paste0("CI_", j*100, "_H")))
       df[i, cols] = as.numeric(cred_int)
     }

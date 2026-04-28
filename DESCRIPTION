@@ -1,6 +1,6 @@
 Package: varplot
 Title: Quality of Life Plotting for INLA Models
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Andrew", "Walker", , "andrewswalker2000@gmail.com", role = c("aut", "cre"))
 Description: Provides quality of life functions for quickly visualizing the outputs of Integrated Nested Laplace Approximation (INLA) models.
@@ -9,7 +9,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports: 
-    ggplot2,
+    ggplot2
 Suggests:
     INLA,
     testthat (>= 3.0.0)

@@ -1,3 +1,7 @@
+
+if (!requireNamespace("INLA", quietly = TRUE)) {
+  skip("INLA not available")
+}
 library(INLA)
 Intercept <- 1
 Slope <- 0.5

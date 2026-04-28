@@ -2,8 +2,6 @@
 
 export(Var.plot)
 export(get.cred.intervals)
-importFrom(INLA,inla.emarginal)
-importFrom(INLA,inla.hpdmarginal)
 importFrom(ggplot2,aes)
 importFrom(ggplot2,coord_flip)
 importFrom(ggplot2,geom_errorbar)
